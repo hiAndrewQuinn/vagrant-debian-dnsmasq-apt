@@ -72,6 +72,32 @@ sudo apt udpate
 
 ### The SOCKS5 proxy
 
+```bash
+# From within internet_server
+ssh vagrant@192.168.56.3
+
+# From within internal_server
+ssh -D 1080 vagrant@192.168.56.2
+# Leave this running!
+```
+
+Now open another terminal window. *Do not* close out of the one running `ssh -D`!
+
+```bash
+# From your bare metal box
+vagrant ssh internet_server
+
+# From within internet_server
+ssh vagrant@192.168.56.3
+
+# From within internal_server
+curl --socks5 localhost:1080 https://1.1.1.1
+# Should return a bunch of HTML!
+```
+
+Excellent! We have proven we can reach the outer web via a SOCK5 proxy.
+
+Now for the next question: How do we get DNS hostnames to resolve too?
 
 
 ## What did we learn, kids?
