@@ -144,6 +144,16 @@ server = 192.168.56.2    # The IP of internet_server
 server_port = 1080      # The port you used for your SOCKS5 proxy
 ```
 
+Then run
+
+```bash
+# From within internal_server
+. tsocks on # to make sure tsocks is working
+tsocks show # you should something like "LD_PRELOAD="libtsocks.so""
+
+curl http://1.1.1.1 # should give some HTML, rather than nothing
+```
+
 
 ## What did we learn, kids?
 
