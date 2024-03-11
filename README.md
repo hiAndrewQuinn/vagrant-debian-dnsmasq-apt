@@ -152,8 +152,10 @@ Then run
 tsocks show # you should something like "LD_PRELOAD="libtsocks.so""
 
 curl http://1.1.1.1 # should give some HTML, rather than nothing
+curl http://5.9.243.187 # alternative if 1.1.1.1 is acting weird, leads to wttr.in
 ```
 
+TODO: Compile tsocks and turn on DNS forcing ourselves!
 
 ## What did we learn, kids?
 
