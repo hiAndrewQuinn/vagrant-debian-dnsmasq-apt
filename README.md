@@ -108,12 +108,27 @@ It turns out we don't have to change much. We can just do
 curl --socks5-hostname localhost:1080 https://example.com
 ```
 
-Easy peasy. Now let's move on to `apt`!
+Easy peasy. Will `apt`, however, be so simple?
 
-### `apt` proxying with `proxychains`
+### Getting `apt` to work over a SOCKS5 proxy
 
+Unfortunately not. _But_ there is a dependency-less program called `tsocks` which can help us out!
 
+```bash
+# On internet_server
+curl -o tsocks.deb http://http.us.debian.org/debian/pool/main/t/tsocks/tsocks_1.8beta5+ds1-1_amd64.deb
+sftp vagrant@192.168.56.3
 
+# In the SFTP shell
+put tsocks.deb
+exit
+
+# Back on internet_server
+ssh vagrant@192.168.56.3
+
+# On internal_server
+sudo dpkg -i tsocks.deb
+```
 
 ## What did we learn, kids?
 
