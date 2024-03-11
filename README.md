@@ -29,6 +29,7 @@ you should be able to SSH from `internet_server` to `internal_server`. Then the 
 ```bash
 # From within internet_server
 ssh vagrant@192.168.56.3 "ping -c 3 8.8.8.8"
+# Should return 3 normal pings.
 ```
 
 you will see that `internal_server` can still very much reach the Internet. We do not want this. So we are going to shut this down, with
@@ -42,4 +43,13 @@ sleep 10
 ssh vagrant@192.168.56.3 "ip a"
 ```
 
+Finally, run
+
+```bash
+# From within internet_server
+ssh vagrant@192.168.56.3 "ping -c 3 8.8.8.8"
+# Should return NOTHING. NOTHING AT ALL
+```
+
+to ensure all is lost.
 
