@@ -56,3 +56,6 @@ ssh vagrant@192.168.56.3 "ping -c 3 8.8.8.8"
 
 to ensure all is lost.
 
+## What did we learn, kids?
+
+- In order to SOCKS5 proxy correctly, your `internet_server` and your `internal_server` must form an *SSH cycle* somewhere -- `internet_server` must be able to reach `internal_server` and vice versa. Ask yourself: Could I SSH back to where I started without ever exiting an earlier SSH session?
