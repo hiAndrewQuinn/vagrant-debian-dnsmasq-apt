@@ -130,6 +130,21 @@ ssh vagrant@192.168.56.3
 sudo dpkg -i tsocks.deb
 ```
 
+`tsocks` should now be installed. You can check this with
+
+```bash
+which tsocks
+# /usr/bin/tsocks for me
+```
+
+Now we need to configure it. Open `/etc/tsocks.conf` in your favorite web editor, and change the following lines:
+
+```bash
+server = 192.168.56.2    # The IP of internet_server
+server_port = 1080      # The port you used for your SOCKS5 proxy
+```
+
+
 ## What did we learn, kids?
 
 - In order to SOCKS5 proxy correctly, your `internet_server` and your `internal_server` must form an *SSH cycle* somewhere -- `internet_server` must be able to reach `internal_server` and vice versa. Ask yourself: Could I SSH back to where I started without ever exiting an earlier SSH session?
