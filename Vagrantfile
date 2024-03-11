@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     internet.vm.network "forwarded_port", guest: 22, host: 2222, id: "ssh"
 
     # Provisioning script to enable password authentication and set user password
-    internal.vm.provision "shell", inline: <<-SHELL
+    internet.vm.provision "shell", inline: <<-SHELL
       # Enable password authentication
       sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
       sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
