@@ -7,6 +7,19 @@ Vagrant.configure("2") do |config|
     internet.vm.network "private_network", ip: "192.168.56.2"
     # Optional: Forward SSH port for easier access
     internet.vm.network "forwarded_port", guest: 22, host: 2222, id: "ssh"
+
+    # Provisioning script to enable password authentication and set user password
+    internal.vm.provision "shell", inline: <<-SHELL
+      # Enable password authentication
+      sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+      sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+      # Reload SSH to apply configuration changes
+      systemctl reload sshd
+
+      # Set the password for the vagrant user
+      echo 'vagrant:vagrant' | chpasswd
+    SHELL
   end
 
   # Define the second machine that can only SSH to the first one

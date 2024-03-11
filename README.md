@@ -18,8 +18,11 @@ to get these VMs working. If you run
 # From your local box
 vagrant ssh internet_server
 
-# From within internet_server
+# From within internet_server - password is `vagrant`
 ssh vagrant@192.168.56.3
+
+# From within internal_server, from within internet_server - password is, again, `vagrant`
+ssh vagrant@192.168.56.2
 ```
 
 you should be able to SSH from `internet_server` to `internal_server`. Then the fun begins...
