@@ -99,6 +99,21 @@ Excellent! We have proven we can reach the outer web via a SOCK5 proxy.
 
 Now for the next question: How do we get DNS hostnames to resolve too?
 
+### Getting hostname resolution
+
+It turns out we don't have to change much. We can just do 
+
+```bash
+# From within internal_server
+curl --socks5-hostname localhost:1080 https://example.com
+```
+
+Easy peasy. Now let's move on to `apt`!
+
+### `apt` proxying with `proxychains`
+
+
+
 
 ## What did we learn, kids?
 
