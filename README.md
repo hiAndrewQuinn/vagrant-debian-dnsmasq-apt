@@ -66,7 +66,7 @@ sudo apt update
 ssh vagrant@192.168.56.3
 
 # From within internal_server
-sudo apt udpate
+sudo apt update
 # should fail
 ```
 
