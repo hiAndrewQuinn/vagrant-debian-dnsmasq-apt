@@ -56,6 +56,24 @@ ssh vagrant@192.168.56.3 "ping -c 3 8.8.8.8"
 
 to ensure all is lost.
 
+Let's just make sure we can't access the _thing we care about_ here, one more time:
+
+```bash
+# From within internet_server
+sudo apt update
+# should work fine
+
+ssh vagrant@192.168.56.3
+
+# From within internal_server
+sudo apt udpate
+# should fail
+```
+
+### The SOCKS5 proxy
+
+
+
 ## What did we learn, kids?
 
 - In order to SOCKS5 proxy correctly, your `internet_server` and your `internal_server` must form an *SSH cycle* somewhere -- `internet_server` must be able to reach `internal_server` and vice versa. Ask yourself: Could I SSH back to where I started without ever exiting an earlier SSH session?
